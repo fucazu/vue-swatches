@@ -205,7 +205,7 @@ export default {
     },
     value: {
       type: Object,
-      default: () => ({ hex: '', id: 0 })
+      default: () => ({ hex: '', id: 0, cor: '' })
     }
   },
   data () {
