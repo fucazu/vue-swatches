@@ -10,7 +10,7 @@ describe('Events', () => {
       const componentWrapper = mount(Swatches)
       const swatch = componentWrapper.find(Swatch)
       swatch.trigger('click')
-
+      console.log('componentWrapper.emitted().input ', componentWrapper.emitted().input)
       return Vue.nextTick()
       .then(() => {
         expect(componentWrapper.emitted().input.length).toEqual(1)

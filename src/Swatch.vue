@@ -62,7 +62,7 @@ export default {
     },
     swatchColor: {
       type: Object,
-      default: { hex: '', id: 0 }
+      default: () => ({ hex: '', id: 0 })
     },
     swatchStyle: {
       type: Object
@@ -81,7 +81,7 @@ export default {
         marginBottom: `${this.spacingSize}px`,
         marginRight: `${this.spacingSize}px`,
         borderRadius: this.borderRadius,
-        backgroundColor: this.swatchColor !== '' ? this.swatchColor : '#FFFFFF',
+        backgroundColor: this.swatchColor.hex !== '' ? this.swatchColor.hex : '#FFFFFF',
         cursor: this.cursorStyle
       }
     },

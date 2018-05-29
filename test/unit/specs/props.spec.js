@@ -210,10 +210,7 @@ describe('Props', () => {
       describe('When empty string are passed as a color', () => {
         test('it should render the swatch diagonal', () => {
           const colors = [
-            {hex: '', id: 0},
-            {hex: '#cc4125', id: 1},
-            {hex: '#e06666', id: 2},
-            {hex: '#f6b26b', id: 3}
+            {hex: '', id: 0}
           ]
           const componentWrapper = mount(Swatches, {
             propsData: {
@@ -237,7 +234,7 @@ describe('Props', () => {
           const componentWrapper = mount(Swatches, {
             propsData: {
               colors,
-              value: ''
+              value: {hex:'', id: 0}
             }
           })
           const diagonal = componentWrapper.find('.vue-swatches__trigger').find('.vue-swatches__diagonal--wrapper')
@@ -257,7 +254,7 @@ describe('Props', () => {
           const componentWrapper = mount(Swatches, {
             propsData: {
               colors,
-              value: '#a156e2'
+              value: {hex: '#a156e2', id: 4}
             }
           })
           const diagonal = componentWrapper.find('.vue-swatches__trigger').find('.vue-swatches__diagonal--wrapper')
@@ -335,7 +332,7 @@ describe('Props', () => {
     describe('When preset name is passed as a prop', () => {
       test('preset colors are shown', () => {
         const presetNameTest = 'material-basic'
-        const rgbColors = presets[presetNameTest].swatches.map(c => rgb(c))
+        const rgbColors = presets[presetNameTest].swatches.map(c => rgb(c.hex))
         const componentWrapper = mount(Swatches, {
           propsData: {
             colors: presetNameTest

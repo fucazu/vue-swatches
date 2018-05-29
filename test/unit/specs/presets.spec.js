@@ -26,13 +26,13 @@ describe('Presets', () => {
           swatches.forEach(r => {
             if (!(r instanceof Array)) return swatchesCount++
             r.forEach(s => {
-              if (isHexColor(s)) validSwatches++
+              if (isHexColor(s.hex)) validSwatches++
               return swatchesCount++
             })
           })
         } else {
           swatches.forEach(s => {
-            if (isHexColor(s)) validSwatches++
+            if (isHexColor(s.hex)) validSwatches++
             return swatchesCount++
           })
         }
