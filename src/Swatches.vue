@@ -232,7 +232,7 @@ export default {
       return this.internalIsOpen
     },
     isNoColor () {
-      return this.checkEquality('', this.internalValue)
+      return this.checkEquality({hex: '', id: 0}, this.internalValue)
     },
 
     /** REAL COMPUTEDS (depends on user's props and preset's values, these have 'computed' prefix) **/
