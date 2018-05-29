@@ -8,7 +8,7 @@
     }"
     :style="swatchStyles"
   >
-    <div v-if="swatchColor === ''" class="vue-swatches__diagonal--wrapper vue-swatches--has-children-centered">
+    <div v-if="swatchColor.hex === ''" class="vue-swatches__diagonal--wrapper vue-swatches--has-children-centered">
       <div class="vue-swatches__diagonal"></div>
     </div>
     <check v-show="showCheckbox && selected" />
@@ -61,8 +61,8 @@ export default {
       // this prop comes from computed property and always should have a value
     },
     swatchColor: {
-      type: String,
-      default: ''
+      type: Object,
+      default: { hex: '', id: 0 }
     },
     swatchStyle: {
       type: Object

@@ -62,7 +62,7 @@
           <template v-else>
             <swatch
               v-for="swatch in computedColors"
-              :key="swatch"
+              :key="swatch.id || swatch"
               :border-radius="computedBorderRadius"
               :disabled="disabled"
               :exception-mode="computedExceptionMode"
@@ -72,7 +72,7 @@
               :spacing-size="computedSpacingSize"
               :show-border="computedShowBorder"
               :show-checkbox="showCheckbox"
-              :swatch-color="swatch"
+              :swatch-color="swatch.hex || swatch"
               :swatch-style="swatchStyle"
               @click.native="updateSwatch(swatch)"
             />
@@ -386,10 +386,26 @@ export default {
   methods: {
     // Called programmatically
     checkEquality (color1, color2) {
+      if (color1 instanceof Object) {
+        if (color2 instanceof Object) {
+          if ((!color1 && color1.hex !== '') || (!color2 && color2.hex !== '')) return false
+          return (color1.id === color2.id)
+        }
+        if ((!color1 && color1.hex !== '') || (!color2 && color2 !== '')) return false
+        return (color1.id === color2.id)
+      }
+      if (color2 instanceof Object) {
+        if ((!color1 && color1 !== '') || (!color2 && color2.hex !== '')) return false
+        return (color1.id === color2.hex.id)
+      }
       if ((!color1 && color1 !== '') || (!color2 && color2 !== '')) return false
       return (color1.toUpperCase() === color2.toUpperCase())
     },
     checkException (swatch) {
+      if (swatch instanceof Object) {
+        const uppercaseExceptions = this.exceptions.map(s => s.hex.toUpperCase())
+        return uppercaseExceptions.indexOf(swatch.hex.toUpperCase()) !== -1
+      }
       const uppercaseExceptions = this.exceptions.map(s => s.toUpperCase())
       return uppercaseExceptions.indexOf(swatch.toUpperCase()) !== -1
     },
