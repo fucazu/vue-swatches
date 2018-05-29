@@ -204,8 +204,8 @@ export default {
       default: () => {}
     },
     value: {
-      type: String,
-      default: null
+      type: Object,
+      default: () => ({ hex: '', id: 0 })
     }
   },
   data () {
@@ -318,7 +318,7 @@ export default {
       return {
         width: '42px',
         height: '42px',
-        backgroundColor: this.value ? this.value : '#ffffff',
+        backgroundColor: this.value && this.value.hex ? this.value.hex : '#ffffff',
         borderRadius: this.shapes === 'circles' ? '50%' : DEFAULT_BORDER_RADIUS
       }
     },
