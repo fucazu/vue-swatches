@@ -1,5 +1,6 @@
 <template>
   <div
+    :title="swatchColor.cor"
     class="vue-swatches__swatch"
     :class="{
       'vue-swatches__swatch--border': showBorder,
@@ -8,7 +9,7 @@
     }"
     :style="swatchStyles"
   >
-    <div :title="swatchColor.cor" v-if="swatchColor.hex === ''" class="vue-swatches__diagonal--wrapper vue-swatches--has-children-centered">
+    <div v-if="swatchColor.hex === ''" class="vue-swatches__diagonal--wrapper vue-swatches--has-children-centered">
       <div class="vue-swatches__diagonal"></div>
     </div>
     <check v-show="showCheckbox && selected" />
