@@ -63,7 +63,7 @@ export default {
     },
     swatchColor: {
       type: Object,
-      default: () => ({ hex: '', id: 0 })
+      default: () => ({ hex: '', id: 0, cor: '' })
     },
     swatchStyle: {
       type: Object
