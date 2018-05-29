@@ -39,7 +39,7 @@
               :key="index"
               class="vue-swatches__row"
             >
-            <!-- :is-exception="checkException(swatch)" -->
+              <!-- :is-exception="checkException(swatch)" -->
               <swatch
                 v-for="(swatch, index) in swatchRow"
                 :key="index"
@@ -425,7 +425,7 @@ export default {
       this.isOpen ? this.hidePopover() : this.showPopover()
     },
     updateSwatch (swatch, { fromFallbackInput } = {}) {
-      if (this.checkException(swatch) || this.disabled) return
+      // if (this.checkException(swatch) || this.disabled) return
 
       this.internalValue = swatch
       this.$emit('input', swatch)
